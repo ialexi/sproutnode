@@ -26,6 +26,8 @@ For more information about SproutCore, visit http://www.sproutcore.com
 
 ==========================================================================
 @license */
+var sys = require("sys");
+
 
 var SC = SC || {};
 var SproutCore = SproutCore || SC;
@@ -44,7 +46,27 @@ sc_require("license");
 var YES = true;
 var NO = false;
 if (typeof console === "undefined") {
-  global.console = require("base/console");
+  global.console = {
+      message: function(type, what) {
+      	sys.puts(type + ": " + sys.inspect(what));
+      },
+
+      log: function(what){
+      	exports.message("LOG", what);
+      },
+
+      info: function(what){
+      	exports.message("INFO", what);
+      },
+
+      error: function(what){
+      	exports.message("ERROR", what);
+      },
+
+      warn: function(what){
+      	exports.message("WARN", what);
+      }
+    };
 }
 
 SC.mixin = function() {

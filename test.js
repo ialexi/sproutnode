@@ -3,6 +3,9 @@ require.paths.push(process.cwd());
 
 process.mixin(GLOBAL, require("runtime").global);
 
+// turn of .log (comment to get ALL test results)
+console.log = function() {  };
+
 // a hacky simulation of the SproutCore test engine.
 var Testing = require("./coretest").Testing;
 Testing._module = Testing.module;

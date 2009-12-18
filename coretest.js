@@ -1,8 +1,6 @@
 var sys = require("sys"), posix = require("posix");
 exports.Testing = {
   
-  reportInfo: NO,
-  
   _wroteHeader: NO,
   _currentName: "",
   
@@ -19,7 +17,7 @@ exports.Testing = {
   },
   
   log: function(what) {
-    if (exports.Testing.reportInfo) console.log(what);
+    console.log(what);
   },
   
   error: function(what) {

@@ -4,8 +4,15 @@ require.paths.push(process.cwd());
 process.mixin(GLOBAL, require("runtime").global);
 
 // a hacky simulation of the SproutCore test engine.
-var CoreTest = require("./coretest");
-process.mixin(GLOBAL, CoreTest);
+var Testing = require("./coretest").Testing;
+Testing._module = Testing.module;
+process.mixin(GLOBAL, Testing);
+Testing.CoreTest.Suite = require("./suite").Suite;
+
+
+// load array test suites
+SC.ArraySuite = require("manual_array_suites").ArraySuite;
+
 
 // hack to run tests
 var processDirectory = function(path) {
@@ -31,15 +38,15 @@ var processDirectory = function(path) {
 };
 
 var processContents = function(name, contents) {
-  try {
-    CoreTest.start(name);
+//  try {
+    Testing.start(name);
     var result = process.compile(contents, name);
-    CoreTest.log("Ran: " + result);
-  } catch (e) {
-    sys.error("FAILED: " + name);
-    sys.debug(e);
-    process.exit();
-  }
+    Testing.log("Ran: " + result);
+//  } catch (e) {
+//    sys.error("FAILED: " + name);
+//    sys.debug(e);
+//    process.exit();
+//  }
 };
 
 

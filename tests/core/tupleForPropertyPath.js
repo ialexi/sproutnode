@@ -21,13 +21,14 @@ module("Checking the tuple for property path",{
    
 
 test("should check for the tuple property", function() {
-     var object2 = [];
-     object2 = SC.tupleForPropertyPath(object.name,'');
-     equals(object2[0], GLOBAL, "the global object");
-     equals(object2[1],'SproutCore',"the property name");	
-     object2 = SC.tupleForPropertyPath(object.objectA.propertyVal,'object');
-	 equals(object2[0],'object',"the root");
-     equals(object2[1],'chainedProperty',"a chained property");
+  var object2 = [];
+  object2 = SC.tupleForPropertyPath(object.name,'');
+  ok(object2[0] === GLOBAL, "the global object");
+  equals(object2[1],'SproutCore',"the property name");
+  
+  object2 = SC.tupleForPropertyPath(object.objectA.propertyVal,'object');
+  equals(object2[0],'object',"the root");
+  equals(object2[1],'chainedProperty',"a chained property");
 });
 
 test("should check for the tuple property when path is undefined",function(){     //test case where no property defined

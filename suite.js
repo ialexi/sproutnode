@@ -1,4 +1,3 @@
-var module = _module;
 exports.Suite = /** @scope CoreTest.Suite.prototype */ {
 
   /**

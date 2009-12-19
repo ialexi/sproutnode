@@ -5920,4 +5920,5 @@ if ((typeof SC !== "undefined") && SC && SC.bundleDidLoad) {
 
 
 exports.SC = SC;
+exports.SproutCore = SC;
 exports.global = global;

@@ -1,0 +1,60 @@
+tests/core/beget.js
+tests/core/clone.js
+tests/core/compare.js
+tests/core/console.js
+INFO: "Console.info is working"
+WARN: "Console.warn is working"
+ERROR: "Console.error is working"
+tests/core/guidFor.js
+tests/core/inspect.js
+tests/core/isArray.js
+tests/core/IsEqual.js
+tests/core/itemType.js
+tests/core/keys.js
+tests/core/makeArray.js
+tests/core/objectForPropertyPath.js
+tests/core/tupleForPropertyPath.js
+tests/base/console.js
+ERROR: "NO PLAN!!!"
+tests/mixins/array.js
+tests/mixins/comparable.js
+tests/mixins/enumerable.js
+tests/mixins/propertyChanges.js
+tests/system/binding.js
+tests/system/cookie.js
+ERROR: "NO PLAN!!!"
+tests/system/error.js
+tests/system/logger.js
+tests/system/run_loop.js
+tests/system/set.js
+tests/system/sparse_array.js
+tests/private/observer_queue/isObservingSuspended.js
+tests/mixins/observable/observable.js
+tests/mixins/observable/propertyChanges.js
+tests/mixins/observable/registerDependentKeys.js
+tests/system/index_set/add.js
+tests/system/index_set/addEach.js
+tests/system/index_set/clone.js
+tests/system/index_set/contains.js
+tests/system/index_set/create.js
+tests/system/index_set/indexAfter.js
+tests/system/index_set/indexBefore.js
+tests/system/index_set/intersects.js
+tests/system/index_set/max.js
+tests/system/index_set/min.js
+tests/system/index_set/rangeStartForIndex.js
+tests/system/index_set/remove.js
+tests/system/index_set/removeEach.js
+tests/system/index_set/without.js
+tests/system/object/base.js
+tests/system/object/bindings.js
+tests/system/range_observer/create.js
+tests/system/range_observer/destroy.js
+tests/system/range_observer/objectPropertyDidChange.js
+tests/system/range_observer/rangeDidChange.js
+tests/system/range_observer/update.js
+tests/system/selection_set/add.js
+tests/system/selection_set/copy.js
+tests/system/selection_set/indexSetForSource.js
+tests/system/selection_set/isEqual.js
+tests/system/selection_set/remove.js

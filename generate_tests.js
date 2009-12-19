@@ -1,5 +1,5 @@
 var sys = require("sys"), posix = require("posix");
-require.paths.push(process.cwd());
+/*require.paths.push(process.cwd());
 
 process.mixin(GLOBAL, require("runtime").global);
 
@@ -15,7 +15,7 @@ Testing.CoreTest.Suite = require("./suite").Suite;
 
 // load array test suites
 SC.ArraySuite = require("manual_array_suites").ArraySuite;
-
+*/
 
 // hack to run tests
 var processDirectory = function(path) {
@@ -25,16 +25,17 @@ var processDirectory = function(path) {
       if (item.length > 3 && item.substr(item.length - 3) == ".js") {
         // it is a js file
         // read the file
-        posix.cat(item).addCallback(function (name) { 
-          return function(contents) { processContents(name, contents); };
-        }(item) );
+        sys.puts("node run_test.js " + item);
+/*        sys.exec("node run_test.js " + item).addCallback(function(path) {
+          return function(stdout, stderr){ processContents(path, stdout, stderr); };
+        }(item));*/
       }
       
-      posix.stat(item).addCallback(function(stats){
+      posix.stat(item).addCallback(function(path) { return function(stats){
         if (stats.isDirectory()) {
-          processDirectory(item);
+          processDirectory(path);
         }
-      }); 
+      } }(item)); 
       
     }
   });
@@ -42,9 +43,10 @@ var processDirectory = function(path) {
 
 var processContents = function(name, contents) {
 //  try {
-    Testing.start(name);
-    var result = process.compile(contents, name);
-    Testing.log("Ran: " + result);
+  //console.error("TEST: " + name);
+    console.error("STARTING: " + name);
+    console.error(name + " : " + contents);//process.compile(contents, name);
+    console.log("Ran: " + result);
 //  } catch (e) {
 //    sys.error("FAILED: " + name);
 //    sys.debug(e);

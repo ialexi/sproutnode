@@ -1,6 +1,7 @@
 var sys = require("sys"), posix = require("posix");
 exports.Testing = {
-  
+  // try to use SproutCore's version now...
+/*  
   _wroteHeader: NO,
   _currentName: "",
   
@@ -66,9 +67,31 @@ exports.Testing = {
   push: function(result, actual, expected, message) {
     message = message || (result ? "okay" : "failed");
     (result ? exports.Testing.log : exports.Testing.error)(message + ": " + result + "; actual: " + actual + "; expected: " + expected)
-  }
+  },
+  
+  should_throw: function should_throw(callback, expected, msg) {
+    var actual = false ;
+    
+    try {
+      callback();
+    } catch(e) {
+      actual = (typeof expected === "string") ? e.message : e;        
+    }
+    
+    if (expected===false) {
+      ok(actual===false, exports.Testing.CoreTest.fmt("%@ expected no exception, actual %@", msg, actual));
+    } else if (expected===Error || expected===null || expected===true) {
+      ok(!!actual, CoreTest.fmt("%@ expected exception, actual %@", msg, actual));
+    } else {
+      equals(actual, expected, msg);
+    }
+  },
+  
+  
+  expect: function expect(asserts) {
+    this.working.expected = asserts;
+  }*/
 };
-
 
 exports.Testing.CoreTest = {
   
@@ -238,9 +261,14 @@ exports.Testing.CoreTest = {
   /** Test raised warning */
   WARN: 'warnings',
   
-  showUI : false
+  showUI : false,
   
-  
-  
+  Plan: require("./plan").Plan,
+  defaultPlan: require("./plan").defaultPlan,
+  Runner: require("./runner").Runner,
+  Suite: require("./suite").Suite,
+  dump: require("./dump").dump,
+  jsDump: require("./dump").jsDump,
+  equiv: require("./utils").equiv
 };
 

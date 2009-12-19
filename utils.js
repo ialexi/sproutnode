@@ -1,3 +1,20 @@
+// ==========================================================================
+// Project:   SproutCore Costello - Property Observing Library
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
+//            Portions ©2008-2009 Apple Inc. All rights reserved.
+// License:   Licened under MIT license (see license.js)
+// ==========================================================================
+
+/*globals CoreTest */
+
+/**
+  Tests for equality any JavaScript type and structure without unexpected 
+  results.
+
+  Discussions and reference: http://philrathe.com/articles/equiv
+  Test suites: http://philrathe.com/tests/equiv
+  Author: Philippe Rathé <prathe@gmail.com>
+*/
 exports.equiv = function () {
 
     var innerEquiv; // the real equiv function
@@ -125,7 +142,8 @@ exports.equiv = function () {
                 var i;
                 var eq = true; // unless we can proove it
                 var aProperties = [], bProperties = []; // collection of strings
-
+                if (b===a) return true;
+                
                 // comparing constructors is more strict than using instanceof
                 if ( a.constructor !== b.constructor) {
                     return false;
@@ -168,6 +186,9 @@ exports.equiv = function () {
             } else if (typeof a !== typeof b || a === null || b === null || typeof a === "undefined" || typeof b === "undefined") {
                 return false; // don't lose time with error prone cases
 
+            } else if (b && b.isEqual && b.isEqual instanceof Function) {
+              return b.isEqual(a);
+              
             } else {
                 return bindCallbacks(a, callbacks, [b, a]);
             }

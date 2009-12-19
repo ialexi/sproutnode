@@ -2,10 +2,24 @@
 var sys = require("sys"), http = require("http");
 
 var SC = require("./runtime").SC;
+
+// bonus stuff:
 process.mixin(GLOBAL, {
   YES: true,
   NO: false
 });
+
+// this relies on YES and NO
+var ObjectController = require("./controllers/object").ObjectController;
+
+var myObject = SC.Object.create({
+  saying: "Hello, World!"
+});
+
+var controller = ObjectController.create({
+  content: myObject
+});
+GLOBAL.controller = controller; // it needs global. Unfortunately.
 
 // this is pretty pathetic, but still, it is an example
 // no message queuing means it would never work, though :)
@@ -13,8 +27,9 @@ var Server = SC.Object.extend({
   value: "Hi",
   waiters: [],
   request: function(request, response){
+    var rl = SC.RunLoop.begin();
     if (request.uri.path == "/change") {
-      this.set("value", request.uri.params["to"]);
+      myObject.set("saying", request.uri.params["to"]); // purposefully tell Object and not Controller.
       response.sendHeader(200, {"content-type": "text/plain"});
       response.sendBody("Done!");
       response.finish();
@@ -22,9 +37,12 @@ var Server = SC.Object.extend({
       this.waiters.push(response);
       var self=this;
       setTimeout(function(){ 
+        var rl = SC.RunLoop.begin();
         self.finish(response);
-      }, 30000); // do it automatically after 30 seconds.
+        rl.end();
+      }, 5000); // do it automatically after 30 seconds.
     }
+    rl.end();
   },
   
   valueDidChange: function() {
@@ -43,7 +61,7 @@ var Server = SC.Object.extend({
 });
 
 var server = Server.create({
-  value: "Hello, World!"
+  valueBinding: "controller.saying"
 });
 
 http.createServer(function (request, response) {

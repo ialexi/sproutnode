@@ -31,6 +31,7 @@ var sys = require("sys");
 
 var SC = SC || {};
 var SproutCore = SproutCore || SC;
+var YES = true, NO = false;
 
 var global = {
     YES: true,

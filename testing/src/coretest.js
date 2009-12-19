@@ -1,99 +1,6 @@
 var sys = require("sys"), posix = require("posix");
-exports.Testing = {
-  // try to use SproutCore's version now...
-/*  
-  _wroteHeader: NO,
-  _currentName: "",
-  
-  _wroteModuleHeader: NO,
-  _currentModuleName: "",
-  
-  _wroteTestHeader: NO,
-  _currentTestName: "",
-  start: function(what) {
-    exports.Testing._currentName = what;
-    exports.Testing._wroteHeader = NO;
-    exports.Testing._wroteModuleHeader = NO;
-    exports.Testing._wroteTestHeader = NO;
-  },
-  
-  log: function(what) {
-    console.log(what);
-  },
-  
-  error: function(what) {
-    if (!exports.Testing._wroteHeader) sys.puts("FOR: " + exports.Testing._currentName);
-    if (!exports.Testing._wroteModuleHeader) sys.puts("module: " + exports.Testing._currentModuleName);
-    if (!exports.Testing._wroteTestHeader) sys.puts("test: " + exports.Testing._currentTestName);
-    exports.Testing._wroteTestHeader = exports.Testing._wroteHeader = exports.Testing._wroteModuleHeader = YES;
-    console.error(what);
-  },
-  
-  // test environment
-  module: function(name, stuff){
-    exports.Testing._wroteModuleHeader = NO;
-    exports.Testing._currentModuleName = name;
-    exports.Testing.log("Testing: " + name);
-    
-    stuff = stuff || {};
-    this._current_setup = stuff.setup;
-    this._current_teardown = stuff.teardown;
-  },
 
-  test: function(name, func) {
-    if (this._current_setup) this._current_setup();
-    exports.Testing._wroteTestHeader = NO;
-    exports.Testing._currentTestName = name;
-    exports.Testing.log("Test: " + name);
-    func();
-    if (this._current_teardown) this._current_teardown();
-  },
-  
-  equals: function(actual, expected, text){
-    exports.Testing.push(expected==actual, actual, expected, text);
-  },
-  
-  ok: function(expression, text) {
-    if (ok) exports.Testing.log("PASSED: " + text);
-    else exports.Testing.error("FAILED: " + text);
-  },
-  
-  equiv: require("./utils").equiv,
-  
-  same: function(a, b, message) {
-    exports.Testing.push(equiv(a, b), a, b, message);
-  },
-  
-  push: function(result, actual, expected, message) {
-    message = message || (result ? "okay" : "failed");
-    (result ? exports.Testing.log : exports.Testing.error)(message + ": " + result + "; actual: " + actual + "; expected: " + expected)
-  },
-  
-  should_throw: function should_throw(callback, expected, msg) {
-    var actual = false ;
-    
-    try {
-      callback();
-    } catch(e) {
-      actual = (typeof expected === "string") ? e.message : e;        
-    }
-    
-    if (expected===false) {
-      ok(actual===false, exports.Testing.CoreTest.fmt("%@ expected no exception, actual %@", msg, actual));
-    } else if (expected===Error || expected===null || expected===true) {
-      ok(!!actual, CoreTest.fmt("%@ expected exception, actual %@", msg, actual));
-    } else {
-      equals(actual, expected, msg);
-    }
-  },
-  
-  
-  expect: function expect(asserts) {
-    this.working.expected = asserts;
-  }*/
-};
-
-exports.Testing.CoreTest = {
+exports.CoreTest = {
   
   /** 
     Empty function.  Useful for some operations. 
@@ -269,6 +176,6 @@ exports.Testing.CoreTest = {
   Suite: require("./suite").Suite,
   dump: require("./dump").dump,
   jsDump: require("./dump").jsDump,
-  equiv: require("./utils").equiv
+  equiv: require("./equiv").equiv
 };
 

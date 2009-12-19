@@ -1,3 +1,5 @@
+/* MANUALLY CONCATENATED TEST SUITES FOR ARRAY */
+
 // ==========================================================================
 // Project:   SproutCore Costello - Property Observing Library
 // Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.

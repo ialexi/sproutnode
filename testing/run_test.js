@@ -8,7 +8,7 @@ sys.puts(argv[2]);
 process.mixin(GLOBAL, require("../runtime").global);
 
 // turn of .log (comment to get ALL test results)
-console.log = function() {  };
+//console.log = function() {  };
 
 // some basic functions (the definition of CoreTest, etc.)
 var CoreTestGlobal = require("./src/coretest"); // has one export: CoreTest itself.
@@ -16,6 +16,9 @@ process.mixin(GLOBAL, CoreTestGlobal);
 
 // load array test suites (they weren't packaged on their own)
 SC.ArraySuite = require("./src/array_suites").ArraySuite;
+SC.Controller = require("../controllers/controller").Controller;
+SC.ObjectController = require("../controllers/object").ObjectController;
+SC.ArrayController = require("../controllers/array").ArrayController;
 
 // run code
 posix.cat(argv[2]).addCallback(function(contents){

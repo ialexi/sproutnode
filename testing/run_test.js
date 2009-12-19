@@ -8,7 +8,7 @@ sys.puts(argv[2]);
 process.mixin(GLOBAL, require("../runtime").global);
 
 // turn of .log (comment to get ALL test results)
-//console.log = function() {  };
+console.log = function() {  };
 
 // some basic functions (the definition of CoreTest, etc.)
 var CoreTestGlobal = require("./src/coretest"); // has one export: CoreTest itself.

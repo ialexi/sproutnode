@@ -12,14 +12,15 @@ process.mixin(GLOBAL, {
 // this relies on YES and NO
 var ObjectController = require("./controllers/object").ObjectController;
 
-var myObject = SC.Object.create({
+exports.myObject = SC.Object.create({
   saying: "Hello, World!"
 });
 
-var controller = ObjectController.create({
-  content: myObject
+exports.controller = ObjectController.create({
+  content: exports.myObject
 });
-GLOBAL.controller = controller; // it needs global. Unfortunately.
+
+SC.root = exports;
 
 // this is pretty pathetic, but still, it is an example
 // no message queuing means it would never work, though :)
@@ -29,7 +30,7 @@ var Server = SC.Object.extend({
   request: function(request, response){
     var rl = SC.RunLoop.begin();
     if (request.uri.path == "/change") {
-      myObject.set("saying", request.uri.params["to"]); // purposefully tell Object and not Controller.
+      exports.myObject.set("saying", request.uri.params["to"]); // purposefully tell Object and not Controller.
       response.sendHeader(200, {"content-type": "text/plain"});
       response.sendBody("Done!");
       response.finish();

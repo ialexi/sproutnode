@@ -70,6 +70,8 @@ if (typeof console === "undefined") {
     };
 }
 
+SC.root = GLOBAL;
+
 SC.mixin = function() {
     var e = arguments[0] || {};
     var a = 1;
@@ -434,7 +436,7 @@ SC.mixin({
         e,
         a;
         if (!c) {
-            c = GLOBAL
+            c = SC.root
         }
         if (SC.typeOf(f) === SC.T_STRING) {
             if (d === undefined) {
@@ -3378,7 +3380,7 @@ function findClassNames() {
             }
         }
     };
-    a(null, GLOBAL, 2)
+    a(null, SC.root, 2) //eh...
 }
 SC.instanceOf = function(a, b) {
     return !! (a && a.constructor === b)

@@ -7,6 +7,7 @@ if (process.ARGV.indexOf("async") > 0) async = true;
 
 
 var running_count = 0;
+var started = new Date().getTime();
 var _queue = [];
 function queue(what){
   _queue.push(what);
@@ -15,6 +16,9 @@ function queue(what){
 
 function process_queue() {
   while (running_count < NUM_CORES && _queue.length > 0) _run_first();
+  if (running_count == 0 && _queue.length == 0) {
+    sys.puts("Done in " + (new Date().getTime() - started) / 1000 + " secnds");
+  }
 }
 
 function _run_first(){
@@ -22,12 +26,12 @@ function _run_first(){
   running_count ++;
   var result = sys.exec("node testing/run_test.js " + entry).addCallback(function(stdout, stderr) {
     running_count--;
-    process_queue();
     sys.print(stdout + stderr);
+    process_queue();
   }).addErrback( function(code, stdout, stderr) {
     running_count--;
+    sys.print("Error: " + code + ": " + stdout + stderr);
     process_queue();
-    sys.print("Error: " + code + ": " + stdout + stderr)
   });
 }
 

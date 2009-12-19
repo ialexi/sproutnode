@@ -52,19 +52,19 @@ if (typeof console === "undefined") {
       },
 
       log: function(what){
-      	exports.message("LOG", what);
+      	global.console.message("LOG", what);
       },
 
       info: function(what){
-      	exports.message("INFO", what);
+      	global.console.message("INFO", what);
       },
 
       error: function(what){
-      	exports.message("ERROR", what);
+      	global.console.message("ERROR", what);
       },
 
       warn: function(what){
-      	exports.message("WARN", what);
+      	global.console.message("WARN", what);
       }
     };
 }

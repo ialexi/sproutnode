@@ -29,7 +29,8 @@
   @extends SC.Object
   @since SproutCore 1.0
 */
-var SC = require("../runtime").SC;
+var SC = require("../../runtime").SC, YES = true, NO = false;
+
 exports.Controller = SC.Object.extend(
 /** @scope SC.Controller.prototype */ {
   

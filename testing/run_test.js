@@ -5,7 +5,12 @@ sys.puts(argv[2]);
 
 /* Prepare Tester */
 // mix in globals
-process.mixin(GLOBAL, require("../runtime").global);
+process.mixin(GLOBAL, {
+  SC: require("../sproutcore"),
+  console: require("../sproutcore").console,
+  YES: true,
+  NO: false
+});
 
 // turn of .log (comment to get ALL test results)
 console.log = function() {  };
@@ -16,9 +21,6 @@ process.mixin(GLOBAL, CoreTestGlobal);
 
 // load array test suites (they weren't packaged on their own)
 SC.ArraySuite = require("./src/array_suites").ArraySuite;
-SC.Controller = require("../controllers/controller").Controller;
-SC.ObjectController = require("../controllers/object").ObjectController;
-SC.ArrayController = require("../controllers/array").ArrayController;
 
 // run code
 posix.cat(argv[2]).addCallback(function(contents){

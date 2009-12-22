@@ -33,42 +33,31 @@ var SC = SC || {};
 var SproutCore = SproutCore || SC;
 var YES = true, NO = false;
 
-var global = {
-    YES: true,
-    NO: false,
-    SC: SC,
-    SproutCore: SproutCore
-};
-
 var sc_require = sc_require || function() { };
-var sc_resource = sc_resource ||
-function sc_resource() {};
-sc_require("license");
-var YES = true;
-var NO = false;
-if (typeof console === "undefined") {
-  global.console = {
-      message: function(type, what) {
-      	sys.puts(type + ": " + sys.inspect(what));
-      },
+var sc_resource = sc_resource || function sc_resource() {};
 
-      log: function(what){
-      	global.console.message("LOG", what);
-      },
+// set up console
+SC.console = {
+  message: function(type, what) {
+  	sys.puts(type + ": " + sys.inspect(what));
+  },
 
-      info: function(what){
-      	global.console.message("INFO", what);
-      },
+  log: function(what){
+  	this.message("LOG", what);
+  },
 
-      error: function(what){
-      	global.console.message("ERROR", what);
-      },
+  info: function(what){
+  	this.message("INFO", what);
+  },
 
-      warn: function(what){
-      	global.console.message("WARN", what);
-      }
-    };
-}
+  error: function(what){
+  	this.message("ERROR", what);
+  },
+
+  warn: function(what){
+  	this.message("WARN", what);
+  }
+};
 
 SC.root = GLOBAL;
 
@@ -4937,7 +4926,7 @@ SC.Logger = SC.Object.create({
     fallBackOnAlert: NO,
     fallBackOnLog: YES,
     format: YES,
-    reporter: global.console,
+    reporter: SC.console,
     log: function() {
         var a = this.get("reporter");
         if (this.get("exists") && typeof(a.log) === "function") {
@@ -5921,7 +5910,5 @@ if ((typeof SC !== "undefined") && SC && SC.bundleDidLoad) {
     SC.bundleDidLoad("sproutcore/runtime")
 };
 
-
 exports.SC = SC;
 exports.SproutCore = SC;
-exports.global = global;

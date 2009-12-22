@@ -6,6 +6,7 @@
 // ==========================================================================
 
 var Controller = require("./controller").Controller;
+var SC = require("../../runtime").SC, YES = true, NO = false;
 
 /** @class
 

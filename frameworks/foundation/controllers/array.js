@@ -6,7 +6,7 @@
 
 var Controller = require("./controller").Controller;
 var SelectionSupport = require("../mixins/selectionsupport").SelectionSupport;
-var SC = require("../runtime").SC;
+var SC = require("../../runtime").SC, YES = true, NO = false;
 
 /**
   @class

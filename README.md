@@ -33,15 +33,7 @@ You might note that you don't see: LOG: "Console.log is working"
 
 This is because console.log is disabled by default (see "console.log" section).
 
-SUPER COOL ASYNC TESTING
-========================
-While the results may not be in order, and if there is an error, may be tricky to read,
-a really cool way to run tests (especially if you have 4+ cores) is to call:
-
-		$ node test.js async
-
-It is probably **a bit dangerous**, starting a process for each test almost simultaneously. Still,
-it is really fast, and if you have 8 cores, rather cool.
+What's really nice: **the tests are asynchronous. If you have eight cores (or sixteen virtual cores) it will run eight (or sixteen) times as fast.**
 
 console.log
 -----------

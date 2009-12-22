@@ -28,8 +28,8 @@ For more information about SproutCore, visit http://www.sproutcore.com
 @license */
 var sys = require("sys");
 
-
-var SC = SC || {};
+var exports = exports || {};
+var SC = SC || exports;
 var SproutCore = SproutCore || SC;
 var YES = true, NO = false;
 
@@ -5910,5 +5910,3 @@ if ((typeof SC !== "undefined") && SC && SC.bundleDidLoad) {
     SC.bundleDidLoad("sproutcore/runtime")
 };
 
-exports.SC = SC;
-exports.SproutCore = SC;

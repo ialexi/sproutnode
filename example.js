@@ -1,7 +1,7 @@
 // an attempt at a more practical test
 var sys = require("sys"), http = require("http");
 
-var SC = require("./index").SC;
+var SC = require("./index");
 
 // bonus stuff:
 process.mixin(GLOBAL, {

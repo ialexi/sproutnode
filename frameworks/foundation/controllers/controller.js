@@ -29,18 +29,4 @@
   @extends SC.Object
   @since SproutCore 1.0
 */
-var SC = require("../../runtime").SC, YES = true, NO = false;
-
-exports.Controller = SC.Object.extend(
-/** @scope SC.Controller.prototype */ {
-  
-  /**
-    Makes a controller editable or not editable.  The SC.Controller class 
-    itself does not do anything with this property but subclasses will 
-    respect it when modifying content.
-    
-    @property {Boolean}
-  */
-  isEditable: YES
-  
-});
+var SC = require("sproutnode"), YES = true, NO = false;

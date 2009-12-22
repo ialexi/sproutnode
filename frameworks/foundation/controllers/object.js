@@ -6,7 +6,7 @@
 // ==========================================================================
 
 var Controller = require("./controller").Controller;
-var SC = require("../../runtime").SC, YES = true, NO = false;
+var SC = require("sproutnode"), YES = true, NO = false;
 
 /** @class
 
@@ -50,7 +50,7 @@ var SC = require("../../runtime").SC, YES = true, NO = false;
   @extends SC.Controller
   @since SproutCore 1.0
 */
-exports.ObjectController = Controller.extend(
+SC.ObjectController = Controller.extend(
 /** @scope SC.ObjectController.prototype */ {
 
   // ..........................................................

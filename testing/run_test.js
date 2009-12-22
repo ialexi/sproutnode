@@ -6,7 +6,7 @@ sys.puts(argv[2]);
 /* Prepare Tester */
 // mix in globals
 process.mixin(GLOBAL, {
-  SC: require("../index").SC,
+  SC: require("../index"),
   console: require("../index").console,
   YES: true,
   NO: false

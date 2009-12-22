@@ -28,7 +28,7 @@
   
   @since SproutCore 1.0
 */
-var SC = require("../../runtime").SC, YES = true, NO = false;
+var SC = require("sproutnode"), YES = true, NO = false;
 exports.SelectionSupport = {
   
   // ..........................................................

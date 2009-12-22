@@ -6,7 +6,7 @@
 
 var Controller = require("./controller").Controller;
 var SelectionSupport = require("../mixins/selectionsupport").SelectionSupport;
-var SC = require("../../runtime").SC, YES = true, NO = false;
+var SC = require("sproutnode"), YES = true, NO = false;
 
 /**
   @class
@@ -27,7 +27,7 @@ var SC = require("../../runtime").SC, YES = true, NO = false;
   @author Charles Jolley
   @since SproutCore 1.0
 */
-exports.ArrayController = Controller.extend(SC.Array, SelectionSupport,
+SC.ArrayController = Controller.extend(SC.Array, SelectionSupport,
 /** @scope SC.ArrayController.prototype */ {
 
   // ..........................................................

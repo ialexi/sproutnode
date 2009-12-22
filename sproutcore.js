@@ -1,6 +1,9 @@
 var sc = require("./frameworks/runtime").SC;
 var foundation = require("./frameworks/foundation");
 
-// you have to mix in SC last...
-sc.mixin(exports, sc);
-sc.mixin(exports, foundation);
+// mixin stuff
+sc.mixin(sc, foundation);
+
+exports.SC = sc;
+exports.SproutCore = sc;
+exports.console = sc.console;

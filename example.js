@@ -1,7 +1,7 @@
 // an attempt at a more practical test
 var sys = require("sys"), http = require("http");
 
-var SC = require("./runtime").SC;
+var SC = require("./sproutcore").SC;
 
 // bonus stuff:
 process.mixin(GLOBAL, {
@@ -9,14 +9,11 @@ process.mixin(GLOBAL, {
   NO: false
 });
 
-// this relies on YES and NO
-var ObjectController = require("./controllers/object").ObjectController;
-
 exports.myObject = SC.Object.create({
   saying: "Hello, World!"
 });
 
-exports.controller = ObjectController.create({
+exports.controller = SC.ObjectController.create({
   content: exports.myObject
 });
 

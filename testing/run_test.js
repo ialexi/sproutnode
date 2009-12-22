@@ -6,8 +6,8 @@ sys.puts(argv[2]);
 /* Prepare Tester */
 // mix in globals
 process.mixin(GLOBAL, {
-  SC: require("../sproutcore").SC,
-  console: require("../sproutcore").console,
+  SC: require("../index").SC,
+  console: require("../index").console,
   YES: true,
   NO: false
 });
